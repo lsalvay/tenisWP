@@ -7,12 +7,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>alumno-detalle</ion-title>
+    <ion-title>Detalle de Alumno</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+	<ion-list>
 
+	  <ion-item>
+	    <ion-label floating>Nombre</ion-label>
+	    <ion-input type="text" [(ngModel)]="alumno.nombre"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Apellido</ion-label>
+	    <ion-input type="text" [(ngModel)]="alumno.apellido"></ion-input>
+	  </ion-item>
+	</ion-list>
+	<div padding></div>
+	<button ion-button block (click)="agregarAlumno()">Guardar</button>
 </ion-content>

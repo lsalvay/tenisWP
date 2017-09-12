@@ -10,4 +10,18 @@ export class AlumnosService{
 	public getAlumnos(){
 		return this.alumnos;
 	}
+	public getAlumno(id){
+		return this.alumnos.filter(function(e, i){
+			return e.id == id})[0] || {id: null, nombre: null, apellido: null};
+	}
+	public crearAlumno(alumno){
+		this.alumnos.push(alumno);
+	}
+	public editarAlumno(alumno){
+		for(let i; i < this.alumnos.length; i++){
+			if(this.alumnos[i].id == alumno.id){
+				this.alumnos[i] = alumno
+			}
+		}
+	}
 }

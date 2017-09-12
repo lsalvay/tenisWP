@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AlumnosService } from '../../services/alumnos.service';
 /**
  * Generated class for the AlumnoDetallePage page.
  *
@@ -14,12 +14,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'alumno-detalle.html',
 })
 export class AlumnoDetallePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+	alumno = {id: null, nombre: null, apellido: null};
+	id = null;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alumnosService: AlumnosService) {
+   this.id = navParams.get('id');
+   if(this.id != 0){
+   		this.alumno = alumnosService.getAlumno(this.id)		
+   }
+   
   }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AlumnoDetallePage');
+  }
+
+  agregarAlumno(){
+  	if(this.id != 0){
+  		//estamos editando
+  		this.alumnosService.editarAlumno(this.alumno);
+	  	alert("Alumno editado con exito!");
+  	}else{
+
+	  	this.alumno.id = Date.now();
+	  	this.alumnosService.crearAlumno(this.alumno);
+	  	alert("Alumno creado con exito!");
+  	}
+  	this.navCtrl.pop();
   }
 
 }

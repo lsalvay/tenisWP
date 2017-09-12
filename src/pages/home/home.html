@@ -8,8 +8,9 @@
 
 <ion-content>      
 	<ion-list>
-	  <button ion-item *ngFor="let alumno of alumnos" (click)="goToAlumnoDetalle()">
+	  <button ion-item *ngFor="let alumno of alumnos" (click)="goToAlumnoDetalle(alumno.id)">
 	    {{ alumno.nombre }}
 	  </button>  
 	</ion-list>
+	<button ion-button block (click)="crearAlumno()">Crear Alumno</button>
 </ion-content>
