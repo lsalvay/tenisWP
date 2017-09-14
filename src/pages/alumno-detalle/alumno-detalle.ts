@@ -19,7 +19,10 @@ export class AlumnoDetallePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public alumnosService: AlumnosService) {
    this.id = navParams.get('id');
    if(this.id != 0){
-   		this.alumno = alumnosService.getAlumno(this.id)		
+   		alumnosService.getAlumno(this.id)
+   			.subscribe(alumno => {
+   				this.alumno = alumno;
+   			})		
    }
    
   }
@@ -40,6 +43,11 @@ export class AlumnoDetallePage {
 	  	this.alumnosService.crearAlumno(this.alumno);
 	  	alert("Alumno creado con exito!");
   	}
+  	this.navCtrl.pop();
+  }
+  eliminarAlumno(){
+  	this.alumnosService.eliminarAlumno(this.alumno);
+  	alert("Alumno eliminado con exito!");
   	this.navCtrl.pop();
   }
 

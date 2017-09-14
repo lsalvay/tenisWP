@@ -10,7 +10,10 @@ import { AlumnoDetallePage } from '../alumno-detalle/alumno-detalle'
 export class HomePage {
   alumnos = [];
   constructor(public navCtrl: NavController, public alumnosService : AlumnosService) {
-  	this.alumnos = alumnosService.getAlumnos();
+  	alumnosService.getAlumnos()
+  		.subscribe( alumnos => {
+  			this.alumnos = alumnos;
+  		});
   }
 
   public goToAlumnoDetalle(id){

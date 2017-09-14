@@ -27,5 +27,6 @@
 	  </ion-item>
 	</ion-list>
 	<div padding></div>
-	<button ion-button block (click)="agregarAlumno()">Guardar</button>
+	<button ion-button block (click)="agregarAlumno()">Guardar Alumno</button>
+	<button *ngIf="id != 0" ion-button block (click)="eliminarAlumno()" color="danger">Eliminar Alumno</button>
 </ion-content>
